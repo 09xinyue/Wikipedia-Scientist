@@ -1,0 +1,11 @@
+#People who are the follows of Royal Society
+
+SELECT ?person ?personLabel ?award ?awardLabel
+WHERE
+{
+  ?person wdt:P166 ?award ; #person received an award
+          wdt:P31 wd:Q5 . #person is instance of human
+  ?award wdt:P279* wd:Q15631401 . #award is a Royal Society
+                    
+	SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
