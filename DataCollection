@@ -9,3 +9,18 @@ WHERE
                     
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 }
+
+
+#People who are the follows of Royal Society
+
+SELECT ?person ?personLabel ?menber ?menberlabel#?award ?awardLabel 
+WHERE
+{
+  ?person #wdt:P166 ?award ; #person received an award
+          wdt:P463 ?menber; #person is a menber of 
+          wdt:P31 wd:Q5. #person is instance of human
+  #?award wdt:P279* wd:Q15631401; #award is a Royal Society
+  ?menber wdt:P279* wd:Q123885
+                    
+	SERVICE wikibase:label { bd:serviceParam wikibase:language "en，fr,sp" }
+}
