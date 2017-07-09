@@ -11,3 +11,18 @@ WHERE
                     
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en，fr,sp" }
 }
+
+
+
+
+#People who are the follows of Royal Society
+
+SELECT ?person  ?personLabel ?scopus 
+WHERE
+{
+  ?person wdt:P31 wd:Q5;
+          wdt:P463/wdt:P279* wd:Q123885;
+          wdt:P1153 ?scopus.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en, fr, sp, ge". }
+ 
+}
