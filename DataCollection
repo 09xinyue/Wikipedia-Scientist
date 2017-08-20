@@ -26,3 +26,22 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en, fr, sp, ge". }
  
 }
+
+
+SELECT ?person  ?personLabel ?scopus ?award
+WHERE
+{
+
+   {SELECT ?person (COUNT(?otheraward) as ?award)
+		WHERE
+		{
+        ?person wdt:P31 wd:Q5;
+                wdt:P463/wdt:P279* wd:Q123885;
+                wdt:P1153 ?scopus;
+		        wdt:P166 ?otheraward}
+		GROUP BY ?person
+    }
+                 
+   SERVICE wikibase:label { bd:serviceParam wikibase:language "en, fr, sp, ge".}
+ 
+}
